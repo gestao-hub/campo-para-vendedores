@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: #f8faf7;
+  --foreground: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  background: #facc15;
+  color: #052e16;
+}
+
+.section-shell {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 32px));
+}
+
+.field-lines {
+  background-image:
+    linear-gradient(rgba(250, 204, 21, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 204, 21, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
