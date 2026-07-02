@@ -30,7 +30,13 @@ Atualizado em: 2026-07-02
 - O cadastro real do webhook no Asaas deve usar uma URL publica, por exemplo:
   - `https://seu-dominio.com/api/webhooks/asaas`
 - Token de autenticacao do webhook fica em `ASAAS_WEBHOOK_TOKEN`.
-- O Asaas exige `ASAAS_WEBHOOK_EMAIL` para cadastrar o webhook.
+- O Asaas exige `ASAAS_WEBHOOK_EMAIL` para cadastrar o webhook. Esse e-mail e um contato operacional/alerta do webhook, usado pelo Asaas para notificacoes do proprio webhook. Pode ser o e-mail da conta Asaas, suporte ou contato do projeto.
+
+## E-mail transacional
+
+- `RESEND_API_KEY` configura a conta/API da Resend.
+- `FROM_EMAIL` e o remetente que o cliente vera quando receber o acesso, por exemplo `Entre em Campo <acesso@seudominio.com>`.
+- Para producao, o dominio/remetente precisa estar autorizado/verificado na Resend.
 
 ## Pendencias antes de producao
 
@@ -38,6 +44,6 @@ Atualizado em: 2026-07-02
 - Configurar `NEXT_PUBLIC_SITE_URL` na Vercel.
 - Criar bucket privado `courses` e subir o PDF correto.
 - Criar tabelas no Supabase.
-- Configurar `RESEND_API_KEY` e `FROM_EMAIL`.
+- Configurar `FROM_EMAIL` com remetente verificado na Resend.
 - Informar `ASAAS_WEBHOOK_EMAIL` e cadastrar webhook no Asaas apontando para a URL publica.
 - Testar pagamento real com valor controlado antes de abrir trafego.

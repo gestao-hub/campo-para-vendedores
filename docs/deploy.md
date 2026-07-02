@@ -83,7 +83,21 @@ npm run asaas:webhook
 
 O Asaas exige um e-mail para alertas do webhook. Configure `ASAAS_WEBHOOK_EMAIL` antes de rodar esse comando.
 
-## 4. Fluxo esperado
+Esse e-mail nao e o e-mail do cliente e nao e necessariamente o remetente dos envios. Ele e um contato operacional que o Asaas exige para cadastrar o webhook e receber alertas/notificacoes do webhook.
+
+## 4. Resend
+
+`RESEND_API_KEY` e o token da API. `FROM_EMAIL` e o remetente visivel do e-mail enviado ao cliente com o link de acesso.
+
+Use um remetente verificado na Resend, por exemplo:
+
+```txt
+Entre em Campo <acesso@seudominio.com>
+```
+
+Se o dominio ainda nao estiver verificado, configure isso na Resend antes de testar envio para clientes reais.
+
+## 5. Fluxo esperado
 
 1. Cliente preenche nome e e-mail na LP.
 2. `POST /api/checkout` cria pedido local.
