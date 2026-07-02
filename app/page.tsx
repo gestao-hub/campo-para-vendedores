@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  CheckCircle2,
   ClipboardCheck,
   Dumbbell,
   Flag,
@@ -11,8 +10,11 @@ import {
   Target,
   Trophy
 } from "lucide-react";
+import Image from "next/image";
 import { CheckoutForm } from "@/components/landing/CheckoutForm";
 import { getProductConfig } from "@/lib/product";
+
+const supportEmail = "gestao@excluvia.com.br";
 
 const painChecks = [
   "Disse que ligaria amanha.",
@@ -92,6 +94,16 @@ const faqs = [
     question: "Posso imprimir?",
     answer:
       "Sim. O manual foi criado para ser lido, marcado, preenchido e usado como campo de treino."
+  },
+  {
+    question: "Tem garantia?",
+    answer:
+      "Sim. Voce tem 7 dias corridos apos a compra para solicitar reembolso pelo suporte, conforme a politica de reembolso."
+  },
+  {
+    question: "Quais formas de pagamento?",
+    answer:
+      "O checkout pelo Asaas permite escolher as formas disponiveis, como Pix, cartao e boleto, conforme disponibilidade da conta e do pagamento."
   }
 ];
 
@@ -140,35 +152,24 @@ export default function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-sm md:max-w-md">
-            <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-lg bg-scoreboard/40" />
-            <div className="relative overflow-hidden rounded-lg border border-scoreboard bg-field-50 p-5 text-field-900 shadow-field">
-              <div className="rounded-md bg-field-900 p-5 text-white">
-                <p className="text-sm font-black uppercase text-scoreboard">
-                  Manual Oficial
-                </p>
-                <h2 className="mt-8 text-5xl font-black leading-none">
-                  Entre em Campo
-                </h2>
-                <p className="mt-4 text-base font-semibold text-field-100">
-                  Manual pratico de 21 dias para conquistar clientes com
-                  confianca.
-                </p>
-              </div>
-              <div className="mt-4 grid gap-2">
-                {["Missao", "Leitura de jogo", "Campo de treino", "Placar"].map(
-                  (item) => (
-                    <div
-                      className="flex items-center gap-2 rounded-md border border-field-100 bg-white px-3 py-2 text-sm font-black"
-                      key={item}
-                    >
-                      <CheckCircle2
-                        aria-hidden
-                        className="h-4 w-4 text-field-700"
-                      />
-                      {item}
-                    </div>
-                  )
-                )}
+            <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-lg bg-scoreboard/50" />
+            <div className="relative rounded-lg border border-scoreboard/80 bg-white p-3 shadow-field">
+              <Image
+                priority
+                alt="Capa do manual Entre em Campo"
+                className="h-auto w-full rounded-md"
+                height={1500}
+                src="/assets/entre-em-campo-cover.png"
+                width={960}
+              />
+              <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs font-black uppercase text-field-900">
+                <span className="rounded-md bg-field-50 px-2 py-2">21 dias</span>
+                <span className="rounded-md bg-field-50 px-2 py-2">
+                  Checklists
+                </span>
+                <span className="rounded-md bg-field-50 px-2 py-2">
+                  Missoes
+                </span>
               </div>
             </div>
           </div>
@@ -401,10 +402,16 @@ export default function Home() {
               Leia. Use. Pratique.
             </h2>
             <p className="mt-4 text-lg leading-8 text-field-100">
-              Se o material nao entregar valor para sua realidade dentro do
-              prazo de garantia informado no checkout, voce pode solicitar
-              reembolso conforme a politica de compra.
+              Voce tem 7 dias corridos para ler, aplicar as primeiras missoes e
+              solicitar reembolso se sentir que o material nao faz sentido para
+              sua realidade.
             </p>
+            <a
+              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md border border-scoreboard px-5 py-2 text-sm font-black uppercase text-scoreboard transition hover:bg-scoreboard hover:text-field-900"
+              href="/reembolso"
+            >
+              Ver politica de reembolso
+            </a>
           </div>
           <div>
             <MessageCircle aria-hidden className="h-9 w-9 text-scoreboard" />
@@ -430,20 +437,30 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-field-950 bg-field-900 px-4 py-10 text-white">
-        <div className="section-shell flex flex-col gap-4 text-sm text-field-100 md:flex-row md:items-center md:justify-between">
-          <p className="font-bold">
-            Entre em Campo - Manual Oficial de Campo para Vendedores
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <a className="hover:text-scoreboard" href="mailto:suporte@seudominio.com">
+      <footer className="bg-field-900 px-4 py-10 text-white">
+        <div className="section-shell grid gap-6 text-sm text-field-100 md:grid-cols-[1.2fr_0.8fr] md:items-start">
+          <div>
+            <p className="font-black text-white">
+              Entre em Campo - Manual Oficial de Campo para Vendedores
+            </p>
+            <p className="mt-2 max-w-xl leading-6">
+              Produto digital de educacao comercial. Resultados dependem da
+              aplicacao individual, constancia e contexto de cada comprador.
+            </p>
+            <p className="mt-3">Suporte: {supportEmail}</p>
+          </div>
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            <a className="hover:text-scoreboard" href={`mailto:${supportEmail}`}>
               Suporte
             </a>
             <a className="hover:text-scoreboard" href="/termos">
-              Termos
+              Termos de uso
             </a>
             <a className="hover:text-scoreboard" href="/privacidade">
               Privacidade
+            </a>
+            <a className="hover:text-scoreboard" href="/reembolso">
+              Reembolso
             </a>
           </div>
         </div>
