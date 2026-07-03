@@ -7,8 +7,11 @@ const eslintConfig = [
   ...nextTypescript,
   globalIgnores([
     ".next/**",
+    ".vercel/**",
+    "campo-de-vendas/**",
     "node_modules/**",
     "out/**",
+    "supabase/.temp/**",
     "next-env.d.ts"
   ])
 ];
